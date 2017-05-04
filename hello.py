@@ -1,8 +1,9 @@
+import feedparser
 from flask import Flask
 from flask import render_template
-import feedparser
 from flask import request
 import json
+import requests
 import urllib.parse
 import urllib.request
 
@@ -35,7 +36,7 @@ app = Flask(__name__)
 
 
 def get_rates(frm, to):
-    all_currency = urllib.request.urlopen(CURRENCY_URL).read()
+    all_currency = requests.get(CURRENCY_URL).content
     parsed = json.loads(all_currency).get("rates")
     frm_rate = parsed.get(frm.upper())
     to_rate = parsed.get(to.upper())
@@ -45,7 +46,7 @@ def get_rates(frm, to):
 def get_weather(query):
     query = urllib.parse.quote(query)
     url = WEATHER_URL.format(query)
-    data = urllib.request.urlopen(url).read()
+    data = requests.get(url).content
     parsed = json.loads(data)
     weather = None
     if parsed.get("weather"):
