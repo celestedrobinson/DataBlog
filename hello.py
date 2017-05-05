@@ -46,7 +46,7 @@ def get_rates(frm, to):
 def get_weather(query):
     query = urllib.parse.quote(query)
     url = WEATHER_URL.format(query)
-    data = requests.get(url).content
+    data = requests.get(url).content.encode('utf8')
     parsed = json.loads(data)
     weather = None
     if parsed.get("weather"):
