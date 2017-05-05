@@ -77,11 +77,13 @@ def home():
     if not bias:
         bias = 'liberal'
     articles = get_news(bias)
+
     # get weather
     city = request.args.get('city')
     if not city:
         city = "Logan,UT"
     weather = get_weather(city)
+
     # get currency
     currency_from = request.args.get("currency_from")
     currency_to = request.args.get("currency_to")
