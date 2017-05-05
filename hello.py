@@ -36,7 +36,7 @@ app = Flask(__name__)
 
 
 def get_rates(frm, to):
-    all_currency = requests.get(CURRENCY_URL).content
+    all_currency = str(requests.get(CURRENCY_URL).content, 'utf-8')
     parsed = json.loads(all_currency).get("rates")
     frm_rate = parsed.get(frm.upper())
     to_rate = parsed.get(to.upper())
@@ -46,8 +46,9 @@ def get_rates(frm, to):
 def get_weather(query):
     query = urllib.parse.quote(query)
     url = WEATHER_URL.format(query)
-    data = requests.get(url).content.encode('utf8')
-    parsed = json.loads(data)
+    data = requests.get(url).content
+    data_str = str(data, 'utf-8')
+    parsed = json.loads(data_str)
     weather = None
     if parsed.get("weather"):
         weather = {
