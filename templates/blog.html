@@ -40,10 +40,12 @@
               <h3 class="masthead-brand">Robinson's Brain</h3>
               <nav>
                 <ul class="nav masthead-nav">
+                  {% block list %}
                   <li class="active"><a href="/">Home</a></li>
                   <li><a href="posts">Posts</a></li>
                   <li><a href="about">About Me</a></li>
                   <li><a href="contact">Contact</a></li>
+                  {% endblock %}
                 </ul>
               </nav>
             </div>

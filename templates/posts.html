@@ -1,6 +1,16 @@
 {% extends "blog.html" %}
+
+{% block list %}
+    <li><a href="/">Home</a></li>
+    <li class="active"><a href="posts">Posts</a></li>
+    <li><a href="about">About Me</a></li>
+    <li><a href="contact">Contact</a></li>
+{% endblock %}
+
+
 {% block content %}
 <!-- START THE FEATURETTES -->
+<div class="inner cover">
 
       <hr class="featurette-divider">
 
@@ -39,6 +49,6 @@
       </div>
 
       <hr class="featurette-divider">
-
+</div>
       <!-- /END THE FEATURETTES -->
 {% endblock %}
