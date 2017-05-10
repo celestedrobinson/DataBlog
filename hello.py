@@ -17,7 +17,7 @@ def about():
     return render_template("about.html")
 
 
-@app.contact("/contact")
+@app.route("/contact")
 def contact():
     """
     Leads to the contact me page
