@@ -27,8 +27,10 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #161669;
   background-image: url("../imgs/bground.jpg");
+}
+body::before {
+  background-color: rgb(9, 9, 42, .5);
 }
 body {
   color: #fff;
