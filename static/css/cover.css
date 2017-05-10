@@ -27,10 +27,10 @@ a:hover {
 html,
 body {
   height: 100%;
+  background-color: rgba(30, 30, 30, .8);
   background-image: url("../imgs/bground.jpg");
 }
 body:before {
-  background-color: rgba(30, 200, 30, .6);
   z-index: -1;
 }
 body {
