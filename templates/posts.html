@@ -9,24 +9,28 @@
 
 
 {% block content %}
-<!-- START THE FEATURETTES -->
-<div class="inner cover">
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">Blog Posts Coming Soon! <span class="text-muted">They'll blow your mind!</span></h2>
-          <p class="lead">Things to look forward to: political bias classifier of news feeds. There will be much more information about this, it's 
-            off to a good start.
-          </p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
+<div class="jumbotron">
+  <div class="container">
+    <h2>Posts</h2>
+    <p class="lead">I like to write about software development, data science and anything related.  
+    </p>
+  </div>
 </div>
-      <!-- /END THE FEATURETTES -->
+<!-- START THE POSTS -->
+
+<div class="container">
+  <div class="row">
+    {% for post in blog_posts %}
+    <div class="col-md-4">
+      <h2> {{post.title}} </h2>
+      <p>
+        {{post.description}}
+      </p>
+      <p><a class="btn btn-default" href="{{post.address}}">See More</a></p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- /END THE POSTS -->
 {% endblock %}
