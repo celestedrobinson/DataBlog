@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request
 import json
 import os
+import platform
 import requests
 import urllib.parse
 import urllib.request
@@ -60,9 +61,12 @@ def blog_post(post_id):
     """
     Returns the specified blog post that we are interested in reading.
     """
-    html = open(os.path.abspath(os.path.join("static", "posts", "{}.html".format(post_id))), \
-                encoding="utf-8").read()
-    print(html)
+    if platform.system == 'Linux':
+        path = os.path.abspath(os.path.join("DataBlog", "static", "posts", "{}.html".format(post_id)
+                                           ))
+    else:
+        os.path.abspath(os.path.join("static", "posts", "{}.html".format(post_id)))
+    html = open(path, encoding="utf-8").read()
     return render_template("default_post.html",
                            content=html)
 
