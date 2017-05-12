@@ -61,11 +61,11 @@ def blog_post(post_id):
     """
     Returns the specified blog post that we are interested in reading.
     """
-    if platform.system == 'Linux':
+    if platform.system() == 'Linux':
         path = os.path.abspath(os.path.join("DataBlog", "static", "posts", "{}.html".format(post_id)
                                            ))
     else:
-        os.path.abspath(os.path.join("static", "posts", "{}.html".format(post_id)))
+        path = os.path.abspath(os.path.join("static", "posts", "{}.html".format(post_id)))
     html = open(path, encoding="utf-8").read()
     return render_template("default_post.html",
                            content=html)
