@@ -61,7 +61,7 @@ body {
 
 /* Padding for spacing */
 .inner {
-  padding: 30px;
+  padding: 60px;
 }
 
 /* Featurettes */
@@ -163,7 +163,13 @@ body {
   color: rgba(255,255,255,.5);
 }
 
-
+footer {
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+  
+}
 /*
  * Affix and center
  */
@@ -186,6 +192,7 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
+    height: 10%;
     width: 100%; /* Must be percentage or pixels for horizontal alignment */
   }
 }

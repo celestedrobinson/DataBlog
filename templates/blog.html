@@ -54,14 +54,15 @@
           {% block content %}
           {% endblock %}
 
-          <div class="mastfoot">
+        {% block foot %}  
+
+        </div>
+        <div class="mastfoot">
             <div class="inner">
               <p>&copy; 2017 Bradley Robinson</p>
             </div>
           </div>
-
-        </div>
-
+          {% endblock %}
       </div>
 
     </div>

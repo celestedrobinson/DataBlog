@@ -1,0 +1,30 @@
+If you're like me and just starting to learn how to use Linux, the experience can be somewhat frustrating. Sometimes you
+ type something in Bash, and suddenly see a GUI in the console that you don't know how to get out of. Or when you're using
+  a server and your script that works fine on your own device crashes every time you try to run it. So I'm going to mention
+   a few mistakes I've made and how to fix them.<br />
+<br />
+1. sudo pip install ... (while being a 'user', not 'root') - I'm trying to build a website from scratch, and when I was
+ trying to run the code I kept getting this error:<br />
+<br />
+"import error: cannot import flask"<br />
+<br />
+I knew what it mean, but I didn't understand. I had already pip installed it! As it turned out, I had, but only for my
+ 'user' account, and not on the root. So to fix that problem, I just typed 'sudo su', and <i>then</i>&nbsp;pip install.
+  After that, everything worked smoothly.<br />
+<br />
+2. This inescapable screen after typing 'git commit' (after leaving out the message):<br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://3.bp.blogspot.com/-1TeK5GplxGg/WQyp5_fm-XI/AAAAAAAAAbY/uGse4iFi9KMcTNv4Co6jhpNmogoX9EcIACLcB/s1600/vim.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://3.bp.blogspot.com/-1TeK5GplxGg/WQyp5_fm-XI/AAAAAAAAAbY/uGse4iFi9KMcTNv4Co6jhpNmogoX9EcIACLcB/s1600/vim.jpg" /></a></div>
+<br />
+<br />
+As it turns out, I was in 'vim', which is actually a very popular editor to Unix users, but for someone used to a fancy 
+IDE, it was frightening. I tried pressing escape. Nothing. Tried a few other commands I recognize, and still was not
+ successful. So I closed out Bash and pretended nothing had happened. I made the commitment that I would always remember 
+ '-m "my message"' so I would never get stuck again. But, as might be expected, I forgot again. And again. Eventually 
+ someone pointed out to me that there is a way out.<br />
+<br />
+First, press 'i' so that you can insert. After writing the commit message you want, press 'esc'. Then type ':wq', 
+which tells vim to quite and save the changes. Then your commit should be successful. 
+<br/>
+<br>
