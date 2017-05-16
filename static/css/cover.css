@@ -10,13 +10,20 @@ a:hover {
 }
 
 /* Custom default button */
-.btn-default,
-.btn-default:hover,
-.btn-default:focus {
+.btn-default
+{
   color: #333;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: #fff;
   border: 1px solid #fff;
+}
+
+.btn-default:hover {
+  background-color: rgba(255, 255, 255, .7);
+  border: 1px solid rgba(0, 0, 128, .3)
+}
+.btn-default:focus {
+  background-color: rgba(0, 0, 128, .3)
 }
 
 
@@ -79,8 +86,14 @@ body {
 .blog-post {
   margin-top: 80px;
   margin-bottom: 50px;
+  text-align: left;
+  padding: 20px;
 }
 
+.blog-title {
+  text-align: center;
+  font-size: 24px;
+}
 .blog-post-meta {
   margin-top: 40px;
   color: rgb(100, 100, 100);
@@ -173,6 +186,25 @@ footer {
 /*
  * Affix and center
  */
+
+/*
+ * Row bodies for posts
+ */
+
+.post-panel {
+  background-color: rgba(255, 255, 255, .5);
+  padding: 20px;
+  box-shadow: 10px 10px 10px 10px rgba(0,0,0,.3);
+}
+.post-panel:hover {
+  background-color: rgba(255, 255, 255, .7);
+  box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, .3);
+}
+
+.img-responsive {
+  align-content: center;
+}
+
 
 @media (min-width: 768px) {
   /* Pull out the header and footer */
