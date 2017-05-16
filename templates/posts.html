@@ -11,8 +11,10 @@
 {% block content %}
 <div class="jumbotron">
   <div class="container">
+    </br>
     <h2>Posts</h2>
-    <p class="lead">I like to write about software development, data science and anything related.  
+    <p class="lead">I like to write about software development, data science and anything related. Check your anti-nerd
+      filter at the door.
     </p>
   </div>
 </div>
@@ -22,11 +24,13 @@
   <div class="row">
     {% for post in blog_posts %}
     <div class="col-md-4">
-      <h2> {{post.title}} </h2>
-      <p>
-        {{post.description}}
-      </p>
-      <p><a class="btn btn-default" href="{{post.address}}">See More</a></p>
+      <div class="post-panel">
+        <h2> {{post.title}} </h2>
+        <p>
+          {{post.description}}
+        </p>
+        <p><a class="btn btn-default" href="{{post.address}}">See More</a></p>
+      </div>
     </div>
     {% endfor %}
   </div>

@@ -1,3 +1,5 @@
+
+<h1> Mistakes Were Made: Getting Over a Few Linux Pitfalls</h1> <br><br />
 If you're like me and just starting to learn how to use Linux, the experience can be somewhat frustrating. Sometimes you
  type something in Bash, and suddenly see a GUI in the console that you don't know how to get out of. Or when you're using
   a server and your script that works fine on your own device crashes every time you try to run it. So I'm going to mention
@@ -8,8 +10,13 @@ If you're like me and just starting to learn how to use Linux, the experience ca
 <br />
 "import error: cannot import flask"<br />
 <br />
-I knew what it mean, but I didn't understand. I had already pip installed it! As it turned out, I had, but only for my
- 'user' account, and not on the root. So to fix that problem, I just typed 'sudo su', and <i>then</i>&nbsp;pip install.
+I knew what it mean, but I didn't understand. I had already pip installed it! If I ran python, and imported it there, I 
+didn't run into any problems. As it turned out, it was installed, but just for one user. The code that was being ran
+was from the 'root' user, and not 'username'. So it would look in the root user directory and wouldn't find the script.
+<br></br>
+ There are a few ways to fix this problem. The easy way (and what worked for me)
+ is installing it to the user that will be running the script (such as root). To do so I simply typed 'sudo su' (which
+ gives me access to the root user) and then ran the pip install command again.
   After that, everything worked smoothly.<br />
 <br />
 2. This inescapable screen after typing 'git commit' (after leaving out the message):<br />
