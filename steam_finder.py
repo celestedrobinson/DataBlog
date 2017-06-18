@@ -40,7 +40,7 @@ def get_real_game(apps):
         try:
             result = requests.get("http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/",
                                   params=params)
-            game_content = json.loads(result.content)
+            game_content = result.json()
             try:
                 game_result = game_content['game']['gameName']
                 if is_real_game(game_result):
@@ -69,7 +69,7 @@ def get_random_game(steamid, number_of_suggestions=5):
         except:
             pass
     if result:
-        content = json.loads(result.content)
+        content = result.json()
         apps = content['response']['games']
         games = {}
         while len(games) < number_of_suggestions:
