@@ -4,7 +4,6 @@ Backend code for robinsonbrain.com
 from flask import Flask
 from flask import render_template, request, redirect, url_for
 from config import blog_posts, datasets
-from hidden_keys import STEAM_KEY
 from random import choice
 import json
 import os
@@ -73,8 +72,6 @@ def help_me_decide():
         games = {}
     return render_template("helpmesteam.html",
                            games=games)
-
-
 
 
 @app.route("/post/<post_id>")
