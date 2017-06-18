@@ -1,9 +1,16 @@
+"""
+Backend code for robinsonbrain.com
+"""
 from flask import Flask
 from flask import render_template, request, redirect, url_for
+from config import blog_posts, datasets
+from hidden_keys import STEAM_KEY
+from random import choice
 import json
 import os
 import platform
 import requests
+import steam_finder
 import urllib.parse
 import urllib.request
 
@@ -11,27 +18,18 @@ import urllib.request
 app = Flask(__name__)
 
 
-blog_posts = [{'title': "Finding Their Party: Using Clustering to Find Patterns in Data",
-               'address':
-               "http://robinsonbrain.blogspot.com/2017/04/finding-their-party-using-voting-to.html",
-               'date': '4/27/2017',
-               'description': 'Using voting data from Utah\'s House of Representatives, I describe'\
-               ' how the K-Means algorithm work. Complete with cool, interactive visualizations of'\
-               ' the algorithm during each step, as well as a cute dog picture. Links to code are'\
-               ' provided.'},
-              {'title': "Who's Utah's 'Yes Man?': Data Insights into Utah's House of "\
-               "Representatives 2017",
-               'address':
-               "http://robinsonbrain.blogspot.com/2017/02/grouping-members-of-utahs-house-of.html",
-               'date': '2/19/2017',
-               'description': 'Ever curious about who votes like your representative in Utah\'s '\
-               'House of Representatives? I collect and analyze voting data to find out '\
-               'interesting patterns in the data.'}
-             ]
-
 @app.errorhandler(404)
 def page_not_found(error):
     return redirect(url_for('error_page'))
+
+@app.route("/kmeans_vis", methods=['POST', 'GET'])
+def kmeans_vis():
+
+    # Get the dataset
+
+    return render_template("kmeans_vis.html",
+                           datasets=datasets,
+                           cluster_range=[i for i in range(3, 20)])
 
 @app.route("/error")
 def error_page():
@@ -61,6 +59,22 @@ def posts():
     """
     return render_template("posts.html",
                            blog_posts=blog_posts)
+
+
+@app.route("/helpmesteam", methods=['POST', 'GET'])
+def help_me_decide():
+    steamid = request.args.get('steamid')
+    number_of_suggestions = request.args.get('suggestions')
+    if steamid and number_of_suggestions:
+        if int(number_of_suggestions) > 9 or int(number_of_suggestions) < 1:
+            number_of_suggestions = "9"
+        games = steam_finder.get_random_game(steamid, int(number_of_suggestions))
+    else:
+        games = {}
+    return render_template("helpmesteam.html",
+                           games=games)
+
+
 
 
 @app.route("/post/<post_id>")

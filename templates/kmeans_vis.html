@@ -1,0 +1,51 @@
+{% extends "blog.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="blog-main">
+            <div class="blog-post">
+                <br>
+            <form>
+                Data Set:
+                <select name="data"> 
+                    {% for name, title in datasets.items() %}
+                    <option value={{name}}>{{title}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                Clusters:
+                <select name="k">
+                    {% for cluster in cluster_range %}
+                    <option value={{cluster}}>{{cluster}}</option>
+                    {% endfor %}
+                </select>
+                <input type='submit' value="Submit">
+            </form>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block foot %}  
+
+        </div>
+        
+          </div>
+          <footer
+          >
+            <div class="inner">
+              <p>&copy; 2017 Bradley Robinson</p>
+            </div>
+          </footer>
+          {% endblock %}

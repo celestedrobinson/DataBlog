@@ -1,0 +1,44 @@
+{% extends "blog.html" %}
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    </br>
+    <h2>Help Me Steam!!!</h2>
+    <h4> (Beta Edition) </h4>
+    <p class="lead">If you're like me, you have a hard time deciding which game in your library
+        you want to play. Use this app to randomly select games from your library to make it easier.
+    </p>
+    <p class="lead">
+        <form>
+                My SteamID64: <a href="http://steamidfinder.com/" style="color: rgb(50, 100, 150); font-size:10px">(what is my SteamID?)</a><br>
+                <input type="text" name="steamid"><br>
+                Number of Suggestions:<br>
+                <select name="suggestions">
+                {% for i in range(1, 10)%}
+                <option value={{i}}>{{i}}</option>
+                {% endfor %}
+                </select><br><br>
+                
+                <input type='submit' value='Help Me Decide!'>
+            </form>
+    </p>
+  </div>
+</div>
+<!-- START THE POSTS -->
+
+<div class="container">
+  <div class="row">
+    {% for game, image in games.items() %}
+    <div class="col-md-4">
+      <div class="post-panel">
+        {{game}}
+        <p>
+          <img src="{{image}}">
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- /END THE POSTS -->
+{% endblock %}
