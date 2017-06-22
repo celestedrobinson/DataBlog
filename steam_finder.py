@@ -5,25 +5,21 @@ import json
 import random
 import requests
 from hidden_keys import STEAM_KEY
+from bs4 import BeautifulSoup
 
 
-def is_real_game(game_name):
-    """Makes sure that the given game is real
+def scrape_name(appid):
+    pass
 
-    For now we assume it is, since it turns out that not all
-    games have been named properly. So this should be replaced
-    so that we get the actual name of the game, rather than the
-    one exposed by steam.
+
+def find_real_name(appid):
+    """Called to find the name of the game using Steam's main page
     """
-    """
-    if 'valvetest' in game_name.lower() or game_name == 'Capy_Test':
-        return False
-    elif len(game_name) < 2:
-        return False
-    else:
-        return True
-        """
-    return True
+    response = requests.get('http://store.steampowered.com/app/{}/This_War_of_Mine/'.format(appid))
+    # TODO: check the response code
+    soup = BeautifulSoup(response.content)
+    title = soup.title.text
+    return title.split("on Steam")[0]
 
 
 def get_real_game(apps):
@@ -41,12 +37,7 @@ def get_real_game(apps):
             result = requests.get("http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/",
                                   params=params)
             game_content = result.json()
-            try:
-                game_result = game_content['game']['gameName']
-                if is_real_game(game_result):
-                    return appid, game_result
-            except KeyError:
-                pass
+            return appid, find_real_name(appid)
         except:
             pass
     return 0, "Unable to find a game. Please try again."
